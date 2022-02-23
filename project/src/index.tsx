@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
 
-<<<<<<< HEAD
-
 const Settings = {
   FILM_CARD_TITLE: 'The Grand Budapest Hotel',
   FILM_CARD_GENRE: 'Drama',
