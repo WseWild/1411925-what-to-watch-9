@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
 
+<<<<<<< HEAD
 
 const Settings = {
   FILM_CARD_TITLE: 'The Grand Budapest Hotel',
@@ -17,5 +18,6 @@ ReactDOM.render(
       filmCardGenre = {Settings.FILM_CARD_GENRE}
       filmCardYear = {Settings.FILM_CARD_YEAR}
     />
+
   </React.StrictMode>,
   document.getElementById('root'));
