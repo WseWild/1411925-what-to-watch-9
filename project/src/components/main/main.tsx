@@ -8,10 +8,8 @@ type MainScreenProps = {
   filmCardYear: number;
 }
 
-function MainScreen(props: MainScreenProps):  JSX.Element {
-  const {filmCardTitle} = props;
-  const {filmCardGenre} = props;
-  const {filmCardYear} = props;
+function MainScreen({filmCardGenre, filmCardTitle, filmCardYear}: MainScreenProps):  JSX.Element {
+
   return (
     <>
       <div className="visually-hidden">

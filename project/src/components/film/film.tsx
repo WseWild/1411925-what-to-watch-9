@@ -2,7 +2,7 @@ import PageFooter from '../page-footer/page-footer';
 import PageHeader from '../page-header/page-header';
 import SmallFilmCard from '../small-film-card/small-film-card';
 
-function MoviePage(): JSX.Element {
+function Film(): JSX.Element {
   return (
     <>
       <div className="visually-hidden">
@@ -136,4 +136,4 @@ function MoviePage(): JSX.Element {
   );
 
 }
-export default MoviePage;
+export default Film;
