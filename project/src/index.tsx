@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
+import  {filmsData} from './mocks/filmsData';
 
 const Settings = {
   FILM_CARD_TITLE: 'The Grand Budapest Hotel',
@@ -15,6 +16,7 @@ ReactDOM.render(
       filmCardTitle = {Settings.FILM_CARD_TITLE}
       filmCardGenre = {Settings.FILM_CARD_GENRE}
       filmCardYear = {Settings.FILM_CARD_YEAR}
+      filmsInfo = {filmsData}
     />
 
   </React.StrictMode>,

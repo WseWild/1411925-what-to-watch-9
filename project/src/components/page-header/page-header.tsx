@@ -1,12 +1,16 @@
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const';
+
 function PageHeader(): JSX.Element {
+
   return (
     <header className="page-header film-card__head">
       <div className="logo">
-        <a className="logo__link" href="temp.html">
+        <Link className="logo__link"  to={AppRoute.Root}>
           <span className="logo__letter logo__letter--1">W</span>
           <span className="logo__letter logo__letter--2">T</span>
           <span className="logo__letter logo__letter--3">W</span>
-        </a>
+        </Link>
       </div>
 
       <ul className="user-block">
@@ -16,7 +20,7 @@ function PageHeader(): JSX.Element {
           </div>
         </li>
         <li className="user-block__item">
-          <a className="user-block__link" href="temp.html">Sign out</a>
+          <Link className="user-block__link" to={AppRoute.Root} >Sign out</Link>
         </li>
       </ul>
     </header>

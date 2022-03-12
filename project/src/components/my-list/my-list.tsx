@@ -1,8 +1,13 @@
 import PageFooter from '../page-footer/page-footer';
-import SmallFilmCard from '../small-film-card/small-film-card';
 import PageHeader from '../page-header/page-header';
+import FilmsList from '../films-list/films-list';
+import {FilmsInfo} from '../../types/film';
 
-function MyList(): JSX.Element {
+type MyListProps = {
+  filmsInfo: FilmsInfo;
+}
+
+function MyList({filmsInfo}: MyListProps): JSX.Element {
   return (
     <>
       <div className="visually-hidden">
@@ -40,19 +45,7 @@ function MyList(): JSX.Element {
       <h1 className="visually-hidden">WTW</h1>
       {PageHeader()}
 
-      <section className="catalog">
-        <h2 className="catalog__title visually-hidden">Catalog</h2>
-
-        <div className="catalog__films-list">
-          {SmallFilmCard()}
-          {SmallFilmCard()}
-          {SmallFilmCard()}
-          {SmallFilmCard()}
-          {SmallFilmCard()}
-          {SmallFilmCard()}
-          {SmallFilmCard()}
-        </div>
-      </section>
+      {FilmsList(filmsInfo)}
 
       {PageFooter}
     </>

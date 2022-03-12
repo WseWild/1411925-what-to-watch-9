@@ -1,14 +1,17 @@
-import SmallFilmCard from '../small-film-card/small-film-card';
+import FilmsList from '../films-list/films-list';
 import PageFooter from '../page-footer/page-footer';
 import PageHeader from '../page-header/page-header';
+import {FilmsInfo} from '../../types/film';
 
 type MainScreenProps = {
   filmCardTitle: string;
   filmCardGenre: string;
   filmCardYear: number;
+  filmsInfo: FilmsInfo;
+
 }
 
-function MainScreen({filmCardGenre, filmCardTitle, filmCardYear}: MainScreenProps):  JSX.Element {
+function MainScreen({filmsInfo ,filmCardGenre, filmCardTitle, filmCardYear}: MainScreenProps):  JSX.Element {
 
   return (
     <>
@@ -123,28 +126,7 @@ function MainScreen({filmCardGenre, filmCardTitle, filmCardYear}: MainScreenProp
             </li>
           </ul>
 
-          <div className="catalog__films-list">
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-            {SmallFilmCard()}
-          </div>
+          {FilmsList(filmsInfo)}
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
