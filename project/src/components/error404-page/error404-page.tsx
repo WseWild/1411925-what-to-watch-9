@@ -1,5 +1,7 @@
 import PageHeader from '../page-header/page-header';
 import PageFooter from '../page-footer/page-footer';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const';
 
 
 function Error404Page (): JSX.Element {
@@ -8,7 +10,7 @@ function Error404Page (): JSX.Element {
       <div className="visually-hidden">
         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
           <symbol id="add" viewBox="0 0 19 20">
-            <title>+</title>
+            <title>error404</title>
             <desc>Created with Sketch.</desc>
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
               <polygon id="+" fill="#EEE5B5" points="10.777832 11.2880859 10.777832 19.5527344 8.41650391 19.5527344 8.41650391 11.2880859 0.627929688 11.2880859 0.627929688 8.92675781 8.41650391 8.92675781 8.41650391 0.662109375 10.777832 0.662109375 10.777832 8.92675781 18.5664062 8.92675781 18.5664062 11.2880859"/>
@@ -42,7 +44,7 @@ function Error404Page (): JSX.Element {
 
       <section className="page-content">
         <p>404 Not Found</p>
-        <a href="temp.html" >Go to the home page </a>
+        <Link to={AppRoute.Root}>Go to the home page </Link>
       </section>
 
       {PageFooter}

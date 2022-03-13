@@ -8,22 +8,25 @@ import PrivateRoute from '../private-route/private-route';
 import Error404Page from '../error404-page/error404-page';
 import {AppRoute, AuthorizationStatus} from '../../const';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {FilmsInfo, FilmInfo} from '../../types/film';
 
 
 type AppScreenProps = {
   filmCardTitle: string;
   filmCardGenre: string;
   filmCardYear: number;
+  filmsInfo: FilmsInfo;
 }
 
-function App({filmCardGenre, filmCardTitle, filmCardYear}: AppScreenProps): JSX.Element {
+function App({filmsInfo, filmCardGenre, filmCardTitle, filmCardYear}: AppScreenProps): JSX.Element {
+  const [firstFilm] = filmsInfo;
 
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainScreen filmCardGenre={filmCardGenre} filmCardTitle={filmCardTitle} filmCardYear={filmCardYear}/>}
+          element={<MainScreen filmsInfo={filmsInfo}  filmCardGenre={filmCardGenre} filmCardTitle={filmCardTitle} filmCardYear={filmCardYear}/>}
         />
         <Route
           path={AppRoute.SignIn}
@@ -31,15 +34,15 @@ function App({filmCardGenre, filmCardTitle, filmCardYear}: AppScreenProps): JSX.
         />
         <Route
           path={AppRoute.Film}
-          element={<Film/>}
+          element={<Film  filmsInfo={filmsInfo} />}
         />
         <Route
           path={AppRoute.MyList}
           element={
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
+              authorizationStatus={AuthorizationStatus.Auth}
             >
-              <MyList/>
+              <MyList filmsInfo={filmsInfo}/>
             </PrivateRoute>
           }
         />
@@ -51,9 +54,9 @@ function App({filmCardGenre, filmCardTitle, filmCardYear}: AppScreenProps): JSX.
           path={AppRoute.AddReview}
           element={
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
+              authorizationStatus={AuthorizationStatus.Auth}
             >
-              <Review/>
+              <Review filmInfo={firstFilm as FilmInfo}/>
             </PrivateRoute>
           }
         />

@@ -1,8 +1,13 @@
 import PageFooter from '../page-footer/page-footer';
 import PageHeader from '../page-header/page-header';
-import SmallFilmCard from '../small-film-card/small-film-card';
+import FilmsList from '../films-list/films-list';
+import {FilmsInfo} from '../../types/film';
 
-function Film(): JSX.Element {
+type FilmProps = {
+  filmsInfo: FilmsInfo;
+}
+
+function Film({filmsInfo}: FilmProps): JSX.Element {
   return (
     <>
       <div className="visually-hidden">
@@ -121,12 +126,7 @@ function Film(): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <div className="catalog__films-list">
-            {SmallFilmCard}
-            {SmallFilmCard}
-            {SmallFilmCard}
-            {SmallFilmCard}
-          </div>
+          {FilmsList(filmsInfo)}
         </section>
 
         {PageFooter()}
