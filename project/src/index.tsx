@@ -1,23 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router as BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
 import App from './components/app/app';
-import  {filmsData} from './mocks/filmsData';
+import {
+  checkAuthAction,
+  fetchFilmsAction,
+  fetchPromoAction
+} from './store/api-actions';
+import { browserHistory } from './browser-history';
+import { redirect } from './store/middleware/redirect';
+import { rootReducer } from './store/root-reducer';
+import { requireAuthorization } from './store/action';
+import { createAPI } from './services/api';
+import { AuthorizationStatus } from './const';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Settings = {
-  FILM_CARD_TITLE: 'The Grand Budapest Hotel',
-  FILM_CARD_GENRE: 'Drama',
-  FILM_CARD_YEAR: 2014,
-};
+const api = createAPI(
+  () => store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth)),
+);
 
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      thunk: {
+        extraArgument: api,
+      },
+    }).concat(redirect),
+});
+
+store.dispatch(checkAuthAction());
+store.dispatch(fetchFilmsAction());
+store.dispatch(fetchPromoAction());
 
 ReactDOM.render(
   <React.StrictMode>
-    <App
-      filmCardTitle = {Settings.FILM_CARD_TITLE}
-      filmCardGenre = {Settings.FILM_CARD_GENRE}
-      filmCardYear = {Settings.FILM_CARD_YEAR}
-      filmsInfo = {filmsData}
-    />
-
+    <Provider store={store}>
+      <ToastContainer />
+      <BrowserRouter history={browserHistory}>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'));
